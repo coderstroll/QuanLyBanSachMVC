@@ -1,0 +1,136 @@
+﻿@using QuanLyBanSachMVC.Models
+@{
+    var nhaxuatbantre = ViewBag.nhaxuatbantre as List<Sach>;
+    var kimdong = ViewBag.kimdong as List<Sach>;
+    var vanhoa = ViewBag.vanhoa as List<Sach>;
+    var thanhnien = ViewBag.thanhnien as List<Sach>;
+
+}
+<div class="category-tab">
+    <!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#nhaxuatbantre" data-toggle="tab">Nha Xuat Ban Tre</a></li>
+            <li><a href="#kimdong" data-toggle="tab">Kim Dong</a></li>
+            <li><a href="#vanhoa" data-toggle="tab">Van Hoa</a></li>
+            <li><a href="#thanhnien" data-toggle="tab">Thanh Nien</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="nhaxuatbantre">
+            @foreach (var item in nhaxuatbantre)
+            {
+                var length = item.TenSach.Length;
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/images/book/@item.AnhBia" alt="" />
+                                <h2>$@item.GiaBan</h2>
+                                <p>
+                                    @if (length > 20)
+                                    {
+                                    <p>@item.TenSach.Substring(0, 20)...</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.TenSach</p>
+                                    }
+                                    </p>
+                                @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </div>
+
+        <div class="tab-pane fade" id="kimdong">
+            @foreach (var item in kimdong)
+            {
+                var length = item.TenSach.Length;
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/images/book/@item.AnhBia" alt="" />
+                                <h2>$@item.GiaBan</h2>
+                                <p>
+                                    @if (length > 20)
+                                    {
+                                    <p>@item.TenSach.Substring(0, 20)...</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.TenSach</p>
+                                    }
+                                    </p>
+                                @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </div>
+
+        <div class="tab-pane fade" id="vanhoa">
+            @foreach (var item in vanhoa)
+            {
+                var length = item.TenSach.Length;
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/images/book/@item.AnhBia" alt="" />
+                                <h2>$@item.GiaBan</h2>
+                                <p>
+                                    @if (length > 20)
+                                    {
+                                    <p>@item.TenSach.Substring(0, 20)...</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.TenSach</p>
+                                    }
+                                    </p>
+                                @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </div>
+
+        <div class="tab-pane fade" id="thanhnien">
+            @foreach (var item in thanhnien)
+            {
+                var length = item.TenSach.Length;
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/images/book/@item.AnhBia" alt="" />
+                                <h2>$@item.GiaBan</h2>
+                                <p>
+                                    @if (length > 20)
+                                    {
+                                    <p>@item.TenSach.Substring(0, 20)...</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.TenSach</p>
+                                    }
+                                    </p>
+                                    @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </div>
+        
+</div><!--/category-tab-->

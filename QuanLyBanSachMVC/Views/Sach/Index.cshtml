@@ -1,0 +1,44 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model PagedList<QuanLyBanSachMVC.Models.Sach>
+
+@{
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2 class="title text-center">Shopping</h2>
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-4 ">
+        <div class="product-image-wrapper">
+            <div class="single-products items">
+                <div class="productinfo text-center">
+                    <img src="~/images/book/@Html.DisplayFor(modelItem => item.AnhBia)" alt="items">
+                    <h2>$@Html.DisplayFor(modelItem => item.GiaBan)</h2>
+                    <p>@Html.DisplayFor(modelItem => item.TenSach)</p>
+                    @*<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart fa fa-shopping-cart" })*@
+                </div>
+                <div class="product-overlay">
+                    <div class="overlay-content">
+                        <h2>$@Html.DisplayFor(modelItem => item.GiaBan)</h2>
+                        <p>@Html.DisplayFor(modelItem => item.TenSach)</p>
+                        @Html.ActionLink("Details", "Details", "Sach", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                        @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                    </div>
+                </div>
+            </div>
+            <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+<div class="pagination">Current Page: @Model.PageNumber / @Model.PageCount</div>
+@Html.PagedListPager(Model,n => Url.Action("Index", new { pageNumber = n}))

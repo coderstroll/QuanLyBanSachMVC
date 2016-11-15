@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QuanLyBanSachMVC.Models.Sach>
+@{
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center">@ViewBag.chude</h2>
+
+    @foreach (var item in Model)
+    {
+        var length = item.TenSach.Length;
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="~/images/book/@item.AnhBia" alt="" />
+                        <h2>$@item.GiaBan</h2>
+                        @if (length > 33)
+                        {
+                            <p>@item.TenSach.Substring(0,33)...</p>
+                        }
+                        else
+                        {
+                            <p>@item.TenSach</p>
+                        }
+
+                        @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>$@item.GiaBan</h2>
+                            @if (length > 33)
+                            {
+                                <p>@item.TenSach.Substring(0, 33)...</p>
+                            }
+                            else
+                            {
+                                <p>@item.TenSach</p>
+                            }
+                            @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                        </div>
+                    </div>
+                </div>
+                <div class="choose">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@Html.Action("Categorys", "Home")

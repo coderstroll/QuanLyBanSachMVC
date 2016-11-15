@@ -1,0 +1,88 @@
+﻿@model List<QuanLyBanSachMVC.Models.ShopCart>
+
+@{
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Image")
+        </th>
+        <th>
+            @Html.Label("Book name")
+        </th>
+        <th>
+           @Html.Label("Book Publisher")
+        </th>
+        <th>
+            @Html.Label("Number")
+        </th>
+        <th>
+            @Html.Label("Cost")
+        </th>
+        <th></th>
+    </tr>
+   
+    @foreach (var item in Model)
+    {
+
+        using (Html.BeginForm("Edit", "Cart", new { id = item.cSach.MaSach, soluong = item.cSoLuong }))
+        {
+            <tr>
+                <td>
+                    <img src="~/images/book/@Html.DisplayFor(modelItem => item.cSach.AnhBia)" width="50" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cSach.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cSach.NhaXuatBan.TenNXB)
+                </td>
+                <td>
+                    <input type="number" name="soluong" value="@item.cSoLuong" size="5" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cSach.GiaBan)
+                </td>
+                    
+                <td>
+                    <input type="submit" value="Save" class="btn btn-default"/>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete","Delete",new { id = item.cSach.MaSach }, htmlAttributes: new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+    }
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Cost:</th>
+        <th>@ViewBag.tongtien</th>
+        <th>$</th>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Order","Order",null,htmlAttributes: new { @class = "btn btn-default"})</td>
+    </tr>
+</table>
+
+
+
+<script type="text/javascript" language="javascript">
+    var id, soluong;
+    function getSoLuong(index) {
+        soluong = document.getElementsByName("soluong")[index].value;
+        console.log(index);
+        alert(soluong);
+    }
+    function getID(index) {
+        id = document.getElementsByName("id")[index].value;
+        console.log(index);
+        alert(index);
+    }
+</script>

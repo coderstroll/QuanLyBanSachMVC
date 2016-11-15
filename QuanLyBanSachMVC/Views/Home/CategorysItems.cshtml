@@ -1,0 +1,24 @@
+﻿@using QuanLyBanSachMVC.Models
+@{
+    var listProduct = ViewBag.listProduct as List<Sach>;
+
+}
+
+@foreach (var item in listProduct)
+{
+    <div class="col-sm-3">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <img src="~/images/book/@item.AnhBia" alt="" />
+                    <h2>$@item.GiaBan</h2>
+                    <p>@item.TenSach</p>
+                    @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = item.MaSach }, htmlAttributes: new { @class = "btn btn-default add-to-cart" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
