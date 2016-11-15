@@ -402,6 +402,7 @@
     <Content Include="Views\Layout\error.cshtml" />
     <Content Include="Views\Home\SearchName.cshtml" />
     <Content Include="Views\Home\FilterHome.cshtml" />
+    <Content Include="Views\Home\Demo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

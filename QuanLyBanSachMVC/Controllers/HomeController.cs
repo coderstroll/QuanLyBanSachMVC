@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace QuanLyBanSachMVC.Controllers
 {
+    // xin chao ba con
     public class HomeController : Controller
     {
         QuanLyBanSachEntities db = new QuanLyBanSachEntities();
